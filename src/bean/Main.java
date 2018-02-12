@@ -11,8 +11,5 @@ public class Main {
         ApplicationContext context = new ClassPathXmlApplicationContext("springxml/spring-aop-around.xml");
         Performer performer = (Performer) context.getBean("eddie");
         performer.perform();
-
-//        Main main = (Main) context.getBean("main");
-//        System.out.println(main.getCity().toString());
     }
 }
