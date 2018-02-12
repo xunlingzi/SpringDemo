@@ -1,0 +1,49 @@
+<?bean version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+       default-init-method="init"
+       default-destroy-method="destroy">
+
+    <bean id="Duke" class="bean.Juggler" >
+        <constructor-arg value="15" />
+    </bean>
+
+    <bean id="sonnet29" class="bean.Sonnet29" />
+
+    <bean id="poeticDuke" class="bean.PoeticJuggler">
+        <constructor-arg value="15" />
+        <constructor-arg ref="sonnet29" />
+    </bean>
+
+    <bean id="theStage" class="bean.Stage"
+          factory-method="getInstance" />
+
+    <bean id="kenny" class="bean.Instrumentalist">
+        <property name="song" value="Holo" />
+        <!--<property name="instrument">-->
+            <!--<bean class="bean.Saxophone"/>-->
+        <!--</property>-->
+    </bean>
+
+    <bean id="Tom" class="bean.Instrumentalist"
+          p:song="Jingle Bells"
+          p:instrument-ref="saxophone" />
+
+    <bean id="saxophone" class="bean.Saxophone" />
+    <bean id="guitar" class="bean.Saxophone" />
+    <bean id="cymbal" class="bean.Saxophone" />
+    <bean id="harmonica" class="bean.Saxophone" />
+
+
+    <bean id="hank" class="bean.OneManBand2">
+        <property name="instrumentMap">
+            <map>
+                <entry key="Guitar" value-ref="guitar"/>
+                <entry key="Cymbal" value-ref="cymbal"/>
+                <entry key="Harmonica" value-ref="harmonica"/>
+            </map>
+        </property>
+    </bean>
+</beans>

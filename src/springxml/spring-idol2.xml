@@ -1,0 +1,41 @@
+<?bean version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
+    >
+
+    <context:annotation-config/>
+
+    <bean id="kenny" class="bean.Instrumentalist" >
+        <property name="song" value="Jingle Bells"/>
+    </bean>
+
+    <bean id="guitar" class="bean.Guitar"/>
+    <bean id="saxophone" class="bean.Saxophone"/>
+
+    <bean id="Duke" class="bean.PoeticJuggler" autowire="constructor"/>
+    <bean id="sonnet29" class="bean.Sonnet29"/>
+
+    <!--<bean class="bean.Guitar">-->
+        <!--<qualifier value="stringed"/>-->
+    <!--</bean>-->
+
+
+    <util:list id="cities">
+        <bean class="bean.City"
+              p:name="Chicago" p:state="IL" p:population="2853114"/>
+        <bean class="bean.City"
+              p:name="Atlanta" p:state="GA" p:population="2853114"/>
+        <bean class="bean.City"
+              p:name="Dallas" p:state="TX" p:population="2853114"/>
+        <bean class="bean.City"
+              p:name="Houston" p:state="TX" p:population="2853114"/>
+    </util:list>
+
+    <bean id="main" class="bean.Main">
+        <property name="city" value="#{cities[T(java.lang.Math).random() * cities.size()]}" />
+    </bean>
+
+</beans>
