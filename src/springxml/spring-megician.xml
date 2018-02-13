@@ -6,12 +6,12 @@
        xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-    <bean id="megician" class="bean.Magician"/>
+    <bean id="magician" class="bean.Magician"/>
     <bean id="volunteer" class="bean.Volunteer"/>
     
     <aop:config>
-        <aop:aspect ref="megician">
-            <aop:pointcut id="thinking" expression="execution(* interfaces.Thinker.thinkOfSomething()) and args(thoughts)" />
+        <aop:aspect ref="magician">
+            <aop:pointcut id="thinking" expression="execution(* interfaces.Thinker.thinkOfSomething(String)) and args(thoughts)" />
             
             <aop:before
                 pointcut-ref="thinking"

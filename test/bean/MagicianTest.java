@@ -13,7 +13,7 @@ public class MagicianTest {
     @Test
     public void interceptThoughts() {
         ApplicationContext context = new ClassPathXmlApplicationContext("springxml/spring-megician.xml");
-        MindReader mindReader = (MindReader)context.getBean("megician");
+        MindReader mindReader = (MindReader)context.getBean("magician");
         Thinker thinker = (Thinker)context.getBean("volunteer");
         thinker.thinkOfSomething("Hello World");
         assertEquals("Hello World", mindReader.getThoughts());
