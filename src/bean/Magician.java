@@ -1,7 +1,6 @@
 package bean;
 
 import interfaces.MindReader;
-import org.springframework.stereotype.Component;
 
 public class Magician implements MindReader {
 
